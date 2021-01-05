@@ -24,3 +24,6 @@
      "M-q" 'kill-buffer)
 
    #+end_src
+*** FIXED evil-mode
+
+*** WAIT lsp-mode
