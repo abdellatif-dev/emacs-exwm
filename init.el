@@ -378,6 +378,3 @@
 	  
   (exwm-enable)
   (exwm-init)))
-
-
-;; https://youtu.be/f7xB2fFk1tQ?list=PLEoMzSkcN8oNPbEMYEtswOVTvq7CVddCS&t=2485

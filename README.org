@@ -1,0 +1,9 @@
+* emacs with a X window manager
+** basic config
+
+*** DONE theming
+   
+   #+begin_src emacs-lisp
+   (use-package humanoid-themes
+     :init (load-theme 'humanoid-dark t))
+   #+end_src
