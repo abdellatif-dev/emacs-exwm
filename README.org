@@ -7,3 +7,20 @@
    (use-package humanoid-themes
      :init (load-theme 'humanoid-dark t))
    #+end_src
+*** DONE keybindings
+    #+begin_src emacs-lisp
+  
+    (use-package general)
+
+    (general-define-key
+     "C-M-o" 'counsel-find-file
+     "C-s" 'save-buffer
+     "<C-tab>" 'other-window
+     "<M-tab>" 'counsel-switch-buffer
+     "C-q" 'delete-window
+     "C-M-h" 'split-window-below
+     "C-M-g" 'org-agenda
+     "C-M-v" 'split-window-right
+     "M-q" 'kill-buffer)
+
+   #+end_src
