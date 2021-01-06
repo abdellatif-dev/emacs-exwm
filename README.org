@@ -77,7 +77,11 @@
         (setq projectile-project-search-path '("~/Desktop/dev/*"))) ;; change the directory to your projects folders
       (setq projectile-switch-project-action #'projectile-dired))
 #+end_src
-*** general-keybindings
+*** DONE general-keybindings
+    CLOSED: [2021-01-06 Wed 23:25]
+    :LOGBOOK:
+    - State "DONE"       from              [2021-01-06 Wed 23:25]
+    :END:
 #+begin_src emacs-lisp
     (use-package general)
     
@@ -92,4 +96,140 @@
      "C-M-g" 'org-agenda
      "C-M-v" 'split-window-right
      "M-q" 'kill-buffer)
+#+end_src
+** DONE polybar
+   CLOSED: [2021-01-06 Wed 23:25]
+   :LOGBOOK:
+   - State "DONE"       from              [2021-01-06 Wed 23:25]
+   :END:
+*** config polybar
+#+begin_src conf
+; by abdellatif-dev
+[color]
+bg = #0F111A00
+fg = #E98567
+fg-alt = #A9ABB0
+
+;==========================================================
+
+[bar/main]
+width = 100%
+height = 24
+offset-x = 0
+offset-y = 0
+bottom = true
+fixed-center = true
+line-size = 1
+background = ${color.bg}
+foreground = ${color.fg}
+
+;==========================================================
+
+font-0 = "Hack Nerd Font :pixelsize=12;3"
+font-1 = "Iosevka Nerd Font:pixelsize=13;3"
+
+;==========================================================
+
+enable-ipc = true
+cursor-click = pointer
+
+;== Module Location ========================================================
+
+modules-left = workspaces temperature rootdisk packages
+modules-center = 
+modules-right = cpu memory date
+ 
+;== Modules ========================================================
+
+[module/cpu]
+type = internal/cpu
+label-background = ${color.bg}
+interval = 0.5
+format = [<label>]
+label = " %percentage%% cpu "
+
+[module/temperature]
+type = internal/temperature
+label-background = ${color.bg}
+interval = 0.5
+thermal-zone = 0
+warn-temperature = 60
+units = true
+format =<label>
+format-warn = <label-warn>
+label = " [%temperature-c%]"
+label-warn = " [%temperature-c%]"
+label-warn-foreground = #f006
+label-warn-background = ${color.bg}
+
+;============================================================
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+format-padding = 0.2
+icon-default = 
+
+format = <label-state>
+format-background = ${color.shade2}
+label-active = 
+label-occupied = 窱
+label-urgent = 
+label-empty = 
+
+label-empty-padding = 1
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+
+label-empty-foreground = ${color.fg}
+label-active-foreground = ${color.acolor}
+label-urgent-foreground = ${color.curgent}
+label-occupied-foreground = ${color.coccupied}
+
+;============================================================
+
+[module/memory]
+type = custom/script
+exec = ~/.config/polybar/scripts/menory
+format-background = ${color.bg}
+bgformat-padding = 2
+tail = true
+click-left = /home/flagmate/.config/polybar/scripts/menory_menu & 
+click-right = /home/flagmate/.config/polybar/scripts/menory_menu 
+
+[module/rootdisk]
+type = custom/script
+exec = ~/.config/polybar/scripts/rootdisk
+format-background = ${color.bg}
+bgformat-padding = 2
+tail = true
+
+[module/packages]
+type = custom/script
+exec = ~/.config/polybar/scripts/packages
+format-background = ${color.bg}
+bgformat-padding = 2
+tail = true
+
+[module/date]
+type = internal/date
+interval = 30
+label =  %time%
+label-padding = 2
+label-background = ${color.bg}
+time = [ %I:%M %p]
+time-alt = [ %Y-%m-%d]
+#+end_src
+*** Dependencies
+  - Hack Nerd Font
+  - Iosevka Nerd Font
+  - polybar-msg
+  - polybar
+
+*** emacs config
+#+begin_src emacs-lisp
+(setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ~/.config/polybar/configemacs.int main"))
 #+end_src

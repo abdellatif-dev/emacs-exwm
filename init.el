@@ -345,8 +345,8 @@
   (require 'exwm-randr)
   (exwm-randr-enable)
 
-  (require 'exwm-systemtray)
-  (exwm-systemtray-enable)
+  ;; (require 'exwm-systemtray)
+  ;; (exwm-systemtray-enable)
 
   (setq exwm-input-prefix-keys
     '(?\C-x
