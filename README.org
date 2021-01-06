@@ -1,6 +1,6 @@
 * emacs with a X window manager
 ** basic config
-
+   
 *** DONE theming
    
    #+begin_src emacs-lisp
@@ -24,6 +24,72 @@
      "M-q" 'kill-buffer)
 
    #+end_src
-*** FIXED evil-mode
-
-*** WAIT lsp-mode
+*** FIXED dired config
+   #+begin_src emacs-lisp
+    (use-package dired
+      :ensure nil
+      :commands (dired dired-jump)
+      :bind (("C-x C-j" . dired-jump))
+      :custom ((dired-listing-switches "-agho --group-directories-first"))
+      :config
+      (evil-collection-define-key 'normal 'dired-mode-map
+        "h" 'dired-single-up-directory
+        "l" 'dired-single-buffer))
+    
+    (use-package dired-single)
+    
+    (use-package all-the-icons-dired
+      :hook (dired-mode . all-the-icons-dired-mode))
+    
+    (use-package dired-open
+      :config
+      ;; Doesn't work as expected!
+      ;;(add-to-list 'dired-open-functions #'dired-open-xdg t)
+      (setq dired-open-extensions '(("png" . "feh")
+                                    ("mkv" . "mpv"))))
+    
+    (use-package dired-hide-dotfiles
+      :hook (dired-mode . dired-hide-dotfiles-mode)
+      :config
+      (evil-collection-define-key 'normal 'dired-mode-map
+        "H" 'dired-hide-dotfiles-mode))
+   #+end_src
+*** BUG lsp-mode
+    :LOGBOOK:
+    - State "BUG"        from "WAIT"       [2021-01-06 Wed 12:03]
+    :END:
+    
+*** DONE projectile-mode
+    CLOSED: [2021-01-06 Wed 12:02]
+    :LOGBOOK:
+    - State "DONE"       from              [2021-01-06 Wed 12:02]
+    :END:
+#+begin_src emacs-lisp
+    (use-package projectile
+      :diminish projectile-mode
+      :config (projectile-mode)
+      :custom ((projectile-completion-system 'ivy))
+      :bind-keymap
+      ("C-c p" . projectile-command-map)
+      :init
+      ;; NOTE: Set this to the folder where you keep your Git repos!
+      (when (file-directory-p "~/Desktop/dev/*") ;; change the directory to your projects folders
+        (setq projectile-project-search-path '("~/Desktop/dev/*"))) ;; change the directory to your projects folders
+      (setq projectile-switch-project-action #'projectile-dired))
+#+end_src
+*** general-keybindings
+#+begin_src emacs-lisp
+    (use-package general)
+    
+    (general-define-key
+    ;"KEY-binding" 'command
+     "C-M-o" 'counsel-find-file
+     "C-s" 'save-buffer
+     "C-`" 'other-window
+     "M-`" 'counsel-switch-buffer
+     "C-q" 'delete-window
+     "C-M-h" 'split-window-below
+     "C-M-g" 'org-agenda
+     "C-M-v" 'split-window-right
+     "M-q" 'kill-buffer)
+#+end_src

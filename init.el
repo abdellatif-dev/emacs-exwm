@@ -129,8 +129,8 @@
 (general-define-key
  "C-M-o" 'counsel-find-file
  "C-s" 'save-buffer
- "<C-tab>" 'other-window
- "<M-tab>" 'counsel-switch-buffer
+ "C-`" 'other-window
+ "M-`" 'counsel-switch-buffer
  "C-q" 'delete-window
  "C-M-h" 'split-window-below
  "C-M-g" 'org-agenda
@@ -343,6 +343,8 @@
       ?\C-u
       ?\C-h
       ?\C-\M-h
+      ?\C-`
+      ?\C-`
       ?\C-\M-v
       ?\M-x
       ?\M-`
