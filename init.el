@@ -335,7 +335,6 @@
   (setq exwm-workspace-number 9)
 
   (start-process-shell-command "sh" nil "sh ~/.config/awesome/scripts/keyboardxmodmap.sh")
-  (start-process-shell-command "sh" nil "sh ~/.config/polybar/launchemacs.sh")
 
   ;; When window "class" updates, use it to set the buffer name
   (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
@@ -394,4 +393,7 @@
 	  
   (exwm-enable)
   (exwm-init)))
+;; ~/.config/polybar/configemacs.int
+;; ~/.config/polybar/launchemacs.sh
 
+(setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ~/.config/polybar/configemacs.int main"))
