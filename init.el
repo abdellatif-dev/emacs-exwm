@@ -10,7 +10,6 @@
   version-control t)
 (setq make-backup-files nil)
 
-
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
 (tooltip-mode -1)           ; Disable tooltips
@@ -313,6 +312,10 @@
     "H" 'dired-hide-dotfiles-mode))
 
 
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
 (defun efs/exwm-update-class ()
   (exwm-workspace-rename-buffer exwm-class-name))
 
@@ -379,4 +382,4 @@
   (exwm-enable)
   (exwm-init)))
 
-;; https://youtu.be/f7xB2fFk1tQ?list=PLEoMzSkcN8oNPbEMYEtswOVTvq7CVddCS&t=2485
+;; https://youtu.be/9gfKrrTtyOk?list=PLEoMzSkcN8oNPbEMYEtswOVTvq7CVddCS&t=1317
