@@ -326,12 +326,23 @@
 (defun efs/exwm-update-class ()
   (exwm-workspace-rename-buffer exwm-class-name))
 
+(defun efs/exwm-update-title ()
+  (pcase exwm-class-name
+    ("firefox" (exwm-workspace-rename-buffer (format "Firefox: %s" exwm-title)))))
+
 (use-package exwm
   :config
   (setq exwm-workspace-number 9)
 
   (start-process-shell-command "sh" nil "sh ~/.config/awesome/scripts/keyboardxmodmap.sh")
-  
+  (start-process-shell-command "sh" nil "sh ~/.config/polybar/launchemacs.sh")
+
+  ;; When window "class" updates, use it to set the buffer name
+  (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
+
+  ;; When window title updates, use it to set the buffer name
+  (add-hook 'exwm-update-title-hook #'efs/exwm-update-title)
+ 
   (require 'exwm-randr)
   (exwm-randr-enable)
 
@@ -384,4 +395,3 @@
   (exwm-enable)
   (exwm-init)))
 
-;; https://youtu.be/9gfKrrTtyOk?list=PLEoMzSkcN8oNPbEMYEtswOVTvq7CVddCS&t=1317

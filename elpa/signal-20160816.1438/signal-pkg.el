@@ -1,0 +1,2 @@
+;;; Generated package description from /home/flagmate/.config/emacs/elpa/signal-20160816.1438/signal.el  -*- no-byte-compile: t -*-
+(define-package "signal" "20160816.1438" "Advanced hook" '((emacs "24") (cl-lib "0.5")) :commit "aa58327e2297df921d72a0370468b48663efd438" :authors '(("Mola-T" . "Mola@molamola.xyz")) :maintainer '("Mola-T" . "Mola@molamola.xyz") :keywords '("internal" "lisp" "processes" "tools") :url "https://github.com/mola-T/signal")
