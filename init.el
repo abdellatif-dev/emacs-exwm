@@ -154,14 +154,12 @@
 (use-package tree-sitter)
 (use-package tree-sitter-langs)
 
-(use-package csharp-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode)))
-
 (use-package dmenu)
 
+(use-package lua-mode)
+(use-package go-mode)
+(use-package rust-mode)
 (use-package jedi)
-(use-package omnisharp)
 
 (defun efs/org-font-setup ()
   ;; Replace list hyphen with dot
@@ -391,9 +389,72 @@
           ([?\s-8] . (lambda () (interactive) (exwm-workspace-switch-create 7)))
           ([?\s-9] . (lambda () (interactive) (exwm-workspace-switch-create 8)))))
 	  
-  (exwm-enable)
-  (exwm-init)))
+;; (exwm-enable)
+  ))
 ;; ~/.config/polybar/configemacs.int
+
 ;; ~/.config/polybar/launchemacs.sh
 
-(setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ~/.config/polybar/configemacs.int main"))
+;; (setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ~/.config/polybar/configemacs.int main"))
+
+(defun efs/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook (lsp-mode . efs/lsp-mode-setup)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  :config
+  (lsp-enable-which-key-integration t))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
+(use-package auto-complete)
+
+(require 'auto-complete-config)
+(ac-config-default)
+
+(use-package yasnippet)
+(yas-global-mode 1)
+
+(use-package auto-complete-c-headers)
+
+(defun my:ac-c-header-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include")
+)
+(add-hook 'c-mode-hook 'my:flymake-google-init)
+(add-hook 'c++-mode-hook 'my:flymake-google-init)
+
+(use-package google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+(use-package iedit)
+(define-key global-map (kbd "C-c ;") 'iedit-mode)
+
+(use-package flymake-google-cpplint)
+
+(defun my:flymake-google-init () 
+  (require 'flymake-google-cpplint)
+  (custom-set-variables
+   '(flymake-google-cpplint-command "/home/flagmate/.local/bin/cpplint"))
+  (flymake-google-cpplint-load)
+)
+; turn on Semantic
+(semantic-mode 1)
+; let's define a function which adds semantic as a suggestion backend to auto complete
+; and hook this function to c-mode-common-hook
+(defun my:add-semantic-to-autocomplete() 
+  (add-to-list 'ac-sources 'ac-source-semantic)
+)
+(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+; turn on ede mode 
+(global-ede-mode 1)
+(global-semantic-idle-scheduler-mode 1)

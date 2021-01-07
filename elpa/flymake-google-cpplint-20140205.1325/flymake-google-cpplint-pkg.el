@@ -1,0 +1,2 @@
+;;; Generated package description from /home/flagmate/.config/emacs/elpa/flymake-google-cpplint-20140205.1325/flymake-google-cpplint.el  -*- no-byte-compile: t -*-
+(define-package "flymake-google-cpplint" "20140205.1325" "Help to comply with the Google C++ Style Guide" '((flymake-easy "0.9")) :commit "426e56ae1278d7a078c368e9d495003825ada0bd" :authors '(("Akiha Senda" . "senda.akiha@gmail.com")) :maintainer '("Akiha Senda" . "senda.akiha@gmail.com") :keywords '("flymake" "c" "c++") :url "https://github.com/senda-akiha/flymake-google-cpplint/")

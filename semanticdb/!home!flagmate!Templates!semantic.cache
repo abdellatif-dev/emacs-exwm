@@ -1,0 +1,28 @@
+;; Object semanticdb-project-database-file-1579ae7f62bc
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1579ae7f62bc"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1579ae7f62c8"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("stdlib.h" include (:system-flag t) nil [20 39])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [82 91])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [92 105]))                  
+                :type "int")
+                nil [73 123]))          
+      :file "c.c"
+      :pointmax 124
+      :fsize 123
+      :lastmodtime '(24567 40162 353855 573000)
+      :unmatched-syntax '((symbol 72 . 74) (symbol 82 . 84) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (symbol 82 . 84) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67))))
+  :file "!home!flagmate!Templates!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

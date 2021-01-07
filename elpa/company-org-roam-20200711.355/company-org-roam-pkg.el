@@ -1,0 +1,2 @@
+;;; Generated package description from /home/flagmate/.config/emacs/elpa/company-org-roam-20200711.355/company-org-roam.el  -*- no-byte-compile: t -*-
+(define-package "company-org-roam" "20200711.355" "Company backend for Org-roam" '((emacs "26.1") (company "0.9.0") (dash "2.13") (org-roam "1.0.0")) :commit "1132663bd68022aa7ea005ff53c7c7571890769d" :authors '(("Jethro Kuan" . "jethrokuan95@gmail.com")) :maintainer '("Jethro Kuan" . "jethrokuan95@gmail.com") :keywords '("org-mode" "roam" "convenience") :url "https://github.com/jethrokuan/company-org-roam")
