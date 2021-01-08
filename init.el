@@ -9,6 +9,7 @@
   kept-old-versions 2
   version-control t)
 (setq make-backup-files nil)
+(load-theme 'doom-nord t)
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
@@ -56,6 +57,7 @@
 
 (use-package command-log-mode)
 
+(use-package smartparens)
 (use-package ivy
   :diminish
   :bind (("C-M-f" . swiper)
@@ -74,13 +76,31 @@
   :config
   (ivy-mode 1))
 
-(use-package all-the-icons)
+(use-package all-the-icons 
+:ensure t
+:defer 0.5)
+
+(use-package all-the-icons-ivy
+:ensure t
+  :after (all-the-icons ivy)
+  :custom (all-the-icons-ivy-buffer-commands '(ivy-switch-buffer-other-window ivy-switch-buffer))
+  :config
+  (add-to-list 'all-the-icons-ivy-file-commands 'counsel-dired-jump)
+  (add-to-list 'all-the-icons-ivy-file-commands 'counsel-find-library)
+  (all-the-icons-ivy-setup))
+
+
+(use-package all-the-icons-dired
+:ensure t
+)
+
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
-(use-package humanoid-themes
-  :init (load-theme 'humanoid-dark t))
+(use-package material-theme)
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -102,6 +122,7 @@
          :map minibuffer-local-map
         ("C-r" . 'counsel-minibuffer-history)))
 
+(use-package vscode-icon)
 
 (use-package evil
   :init
@@ -159,7 +180,6 @@
 (use-package lua-mode)
 (use-package go-mode)
 (use-package rust-mode)
-(use-package jedi)
 
 (defun efs/org-font-setup ()
   ;; Replace list hyphen with dot
@@ -413,48 +433,153 @@
   :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-position 'bottom))
+(use-package company
+  :hook (emacs-lisp-mode)
+  (lua-mode)
+  (python-mode)
+  :config (global-company-mode t)
+  (setq company-tooltip-align-annotations t)
+  ;; Use builtin faces instead of ugly ones set by company
+  (custom-set-faces
+   '(company-preview
+     ((t (:foreground "darkgray" :underline t))))
+   '(company-preview-common
+     ((t (:inherit company-preview :weight bold))))
+   '(company-tooltip
+     ((t (:inherit popup-face))))
+   '(company-scrollbar-bg
+     ((t (:inherit popup-scroll-bar-background-face))))
+   '(company-scrollbar-fg
+     ((t (:inherit popup-scroll-bar-foreground-face))))
+   '(company-tooltip-selection
+     ((t (:inherit popup-menu-selection-face))))
+   '(company-tooltip-common
+     ((((type x)) (:inherit company-tooltip :weight bold))
+      (t (:inherit company-tooltip))))
+   '(company-tooltip-common-selection
+     ((((type x)) (:inherit company-tooltip-selection :weight bold))
+      (t (:inherit company-tooltip-selection)))))
+:custom
+  (company-minimum-prefix-length 2)
+  (company-idle-delay 0.0))
 
-(use-package auto-complete)
 
-(require 'auto-complete-config)
-(ac-config-default)
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
 
-(use-package yasnippet)
-(yas-global-mode 1)
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+(use-package company-jedi
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'jedi:setup))
 
-(use-package auto-complete-c-headers)
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
 
-(defun my:ac-c-header-init ()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include")
-)
-(add-hook 'c-mode-hook 'my:flymake-google-init)
-(add-hook 'c++-mode-hook 'my:flymake-google-init)
+(add-hook 'python-mode-hook 'my/python-mode-hook)
 
-(use-package google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(use-package try
+	:ensure t)
 
-(use-package iedit)
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
+(use-package posframe :ensure t)
 
-(use-package flymake-google-cpplint)
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
 
-(defun my:flymake-google-init () 
-  (require 'flymake-google-cpplint)
-  (custom-set-variables
-   '(flymake-google-cpplint-command "/home/flagmate/.local/bin/cpplint"))
-  (flymake-google-cpplint-load)
-)
-; turn on Semantic
-(semantic-mode 1)
-; let's define a function which adds semantic as a suggestion backend to auto complete
-; and hook this function to c-mode-common-hook
-(defun my:add-semantic-to-autocomplete() 
-  (add-to-list 'ac-sources 'ac-source-semantic)
-)
-(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-; turn on ede mode 
-(global-ede-mode 1)
-(global-semantic-idle-scheduler-mode 1)
+(setq py-python-command "python3")
+(setq python-shell-interpreter "python3")
+ 
+
+(use-package elpy
+  :ensure t
+  :custom (elpy-rpc-backend "jedi")
+  :config 
+  
+  (elpy-enable)
+  
+  )
+
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell))
+
+(global-hl-line-mode t)
+ ; deletes all the whitespace when you hit backspace or delete
+(use-package hungry-delete
+  :ensure t
+  :config
+  (global-hungry-delete-mode))
+  
+(use-package smartparens
+:ensure t
+  :hook (prog-mode . smartparens-mode)
+  :custom
+  (sp-escape-quotes-after-insert nil)
+  :config
+  (require 'smartparens-config))
+
+ (use-package default-text-scale
+      :ensure t
+     :config
+      (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+      (global-set-key (kbd "C-M-0") 'default-text-scale-reset)
+      (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
+
+(use-package better-shell
+    :ensure t
+    :bind (("C-\"" . better-shell-shell)
+           ("C-:" . better-shell-remote-open)))
+
+(show-paren-mode t)
+
+(use-package ggtags
+  :ensure t
+  :config 
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+		(ggtags-mode 1)))))
+
+(use-package simple-mpc
+:ensure t)
+(use-package mingus
+:ensure t)
+
+(use-package deadgrep 
+:ensure t)
+
+(use-package rg
+:ensure t
+:commands rg)
+
+(use-package fzf :ensure t)
+
+(use-package eglot)
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(eglot fzf rg deadgrep org-pdfview all-the-icons-ivy which-key vscode-icon visual-fill-column virtualenvwrapper use-package typescript-mode try tree-sitter-langs timp smartparens simple-mpc rust-mode rainbow-delimiters pfuture org-bullets omnisharp mingus material-theme lua-mode lsp-ui lsp-ivy jedi ivy-rich iedit hydra hungry-delete humanoid-themes helm google-c-style go-mode ggtags general flymake-google-cpplint exwm evil-nerd-commenter evil-magit evil-collection eterm-256color elpy elisp-refs doom-themes doom-modeline dmenu dired-single dired-open dired-hide-dotfiles default-text-scale counsel-projectile company-plisp company-org-roam company-lsp company-jedi company-irony company-c-headers company-box command-log-mode cfrs better-shell auto-complete-clang-async auto-complete-clang auto-complete-c-headers all-the-icons-dired ace-window)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-preview ((t (:foreground "darkgray" :underline t))))
+ '(company-preview-common ((t (:inherit company-preview :weight bold))))
+ '(company-scrollbar-bg ((t (:inherit popup-scroll-bar-background-face))))
+ '(company-scrollbar-fg ((t (:inherit popup-scroll-bar-foreground-face))))
+ '(company-tooltip ((t (:inherit popup-face))))
+ '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
+ '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
+ '(company-tooltip-selection ((t (:inherit popup-menu-selection-face)))))

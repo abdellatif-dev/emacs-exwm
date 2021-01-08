@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-1579ae698bbc
+;; Object semanticdb-project-database-file-1594ce1717b0
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-1579ae698bbc"
+(semanticdb-project-database-file "semanticdb-project-database-file-1594ce1717b0"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-1579ae6ba86c"
+    (semanticdb-table "semanticdb-table-1594ce1713d0"
       :major-mode c-mode
       :tags 
         '( ("_FEATURES_H" variable (:constant-flag t) nil [819 830])
@@ -102,7 +102,7 @@
           ("_LARGEFILE_SOURCE" . ((number "1" 12699 . 12700)))
           )
 )
-    (semanticdb-table "semanticdb-table-1579ae72b050"
+    (semanticdb-table "semanticdb-table-1594ce171710"
       :major-mode c-mode
       :tags nil
       :file "stdc-predef.h"
@@ -110,7 +110,7 @@
       :fsize 2290
       :lastmodtime '(24455 11937 0 0)
       :unmatched-syntax nil)
-    (semanticdb-table "semanticdb-table-1579ae5b3534"
+    (semanticdb-table "semanticdb-table-1594ce171730"
       :major-mode c-mode
       :tags 
         '( ("_STDIO_H" variable (:constant-flag t) nil [920 928])
@@ -1616,7 +1616,7 @@
           ("RENAME_EXCHANGE" . ((semantic-list "(1 << 1)" 4432 . 4440)))
           )
 )
-    (semanticdb-table "semanticdb-table-1579ae5b356c"
+    (semanticdb-table "semanticdb-table-1594ce171750"
       :major-mode c-mode
       :tags 
         '( ("__GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION" variable (:constant-flag t) nil [881 928])
@@ -3317,7 +3317,7 @@
           ("EXIT_SUCCESS" . ((number "0" 2768 . 2769)))
           )
 )
-    (semanticdb-table "semanticdb-table-1579ae98e228"
+    (semanticdb-table "semanticdb-table-1594ce171770"
       :major-mode c-mode
       :tags 
         '( ("_ALLOCA_H" variable (:constant-flag t) nil [817 826])
@@ -3347,7 +3347,7 @@
           ("alloca" (spp-arg-list ("size") 1119 . 1125) . ((symbol "__builtin_alloca" 1126 . 1142) (semantic-list "(size)" 1143 . 1149)))
           )
 )
-    (semanticdb-table "semanticdb-table-1579ae77d724"
+    (semanticdb-table "semanticdb-table-1594ce171790"
       :major-mode c-mode
       :tags 
         '( ("_ENDIAN_H" variable (:constant-flag t) nil [817 826])

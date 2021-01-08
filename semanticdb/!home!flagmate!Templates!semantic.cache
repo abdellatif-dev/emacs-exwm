@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-1579ae7f62bc
+;; Object semanticdb-project-database-file-157ae62cfb7c
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-1579ae7f62bc"
+(semanticdb-project-database-file "semanticdb-project-database-file-157ae62cfb7c"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-1579ae7f62c8"
+    (semanticdb-table "semanticdb-table-157ae624deb4"
       :major-mode c-mode
       :tags 
         '( ("stdio.h" include (:system-flag t) nil [1 19])
@@ -21,8 +21,26 @@
       :file "c.c"
       :pointmax 124
       :fsize 123
-      :lastmodtime '(24567 40162 353855 573000)
-      :unmatched-syntax '((symbol 72 . 74) (symbol 82 . 84) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (symbol 82 . 84) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67))))
+      :lastmodtime '(24568 20852 857116 228000)
+      :unmatched-syntax '((symbol 72 . 74) (symbol 82 . 84) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (symbol 82 . 84) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 81 . 82) (FLOAT 76 . 81) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67) (punctuation 75 . 76) (symbol 67 . 74) (punctuation 66 . 67)))
+    (semanticdb-table "semanticdb-table-157ae62cfb3c"
+      :major-mode c++-mode
+      :tags 
+        '( ("iostream" include (:system-flag t) nil [1 20])
+            ("main" function (:type "int") nil [22 49]))          
+      :file "cpp.cpp"
+      :pointmax 50
+      :fsize 49
+      :lastmodtime '(24567 38945 237146 637000)
+      :unmatched-syntax '((symbol 22 . 26)))
+    (semanticdb-table "semanticdb-table-157ae62cfb5c"
+      :major-mode python-mode
+      :tags nil
+      :file "py3.py"
+      :pointmax 19
+      :fsize 18
+      :lastmodtime '(24567 40664 370539 710000)
+      :unmatched-syntax nil))
   :file "!home!flagmate!Templates!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")
