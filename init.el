@@ -10,7 +10,7 @@
   version-control t)
 (setq make-backup-files nil)
 
-;; (load-theme 'afternoon t)
+(load-theme 'afternoon t)
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -570,13 +570,14 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 
+(use-package autothemer)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(afternoon-theme darktooth-theme ample-theme eglot fzf rg deadgrep org-pdfview all-the-icons-ivy which-key vscode-icon visual-fill-column virtualenvwrapper use-package typescript-mode try tree-sitter-langs timp smartparens simple-mpc rust-mode rainbow-delimiters pfuture org-bullets omnisharp mingus material-theme lua-mode lsp-ui lsp-ivy jedi ivy-rich iedit hydra hungry-delete humanoid-themes helm google-c-style go-mode ggtags general flymake-google-cpplint exwm evil-nerd-commenter evil-magit evil-collection eterm-256color elpy elisp-refs doom-themes doom-modeline dmenu dired-single dired-open dired-hide-dotfiles default-text-scale counsel-projectile company-plisp company-org-roam company-lsp company-jedi company-irony company-c-headers company-box command-log-mode cfrs better-shell auto-complete-clang-async auto-complete-clang auto-complete-c-headers all-the-icons-dired ace-window)))
+   '(rainbow-mode which-key vscode-icon visual-fill-column virtualenvwrapper use-package typescript-mode try tree-sitter-langs timp smartparens simple-mpc rust-mode rg rainbow-delimiters pfuture org-bullets omnisharp mingus material-theme lua-mode lsp-ui lsp-ivy jedi ivy-rich iedit hydra hungry-delete humanoid-themes helm google-c-style go-mode ggtags general fzf flymake-google-cpplint exwm evil-nerd-commenter evil-magit evil-collection eterm-256color elpy elisp-refs eglot doom-themes doom-modeline dmenu dired-single dired-open dired-hide-dotfiles default-text-scale deadgrep darktooth-theme counsel-projectile company-plisp company-org-roam company-lsp company-jedi company-irony company-c-headers company-box command-log-mode cfrs better-shell auto-complete-clang-async auto-complete-clang auto-complete-c-headers ample-theme all-the-icons-ivy all-the-icons-dired afternoon-theme ace-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
