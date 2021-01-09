@@ -9,7 +9,12 @@
   kept-old-versions 2
   version-control t)
 (setq make-backup-files nil)
-(load-theme 'doom-nord t)
+
+;; (load-theme 'afternoon t)
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
@@ -80,6 +85,8 @@
 :ensure t
 :defer 0.5)
 
+(use-package afternoon-theme)
+
 (use-package all-the-icons-ivy
 :ensure t
   :after (all-the-icons ivy)
@@ -146,7 +153,7 @@
   (evil-collection-init))
 
 (use-package general)
-
+(use-package darktooth-theme)
 (general-define-key
  "C-M-o" 'counsel-find-file
  "C-s" 'save-buffer
@@ -352,7 +359,7 @@
   :config
   (setq exwm-workspace-number 9)
 
-  (start-process-shell-command "sh" nil "sh ~/.config/awesome/scripts/keyboardxmodmap.sh")
+  ;; (start-process-shell-command "sh" nil "sh ~/.config/awesome/scripts/keyboardxmodmap.sh")
 
   ;; When window "class" updates, use it to set the buffer name
   (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
@@ -569,7 +576,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(eglot fzf rg deadgrep org-pdfview all-the-icons-ivy which-key vscode-icon visual-fill-column virtualenvwrapper use-package typescript-mode try tree-sitter-langs timp smartparens simple-mpc rust-mode rainbow-delimiters pfuture org-bullets omnisharp mingus material-theme lua-mode lsp-ui lsp-ivy jedi ivy-rich iedit hydra hungry-delete humanoid-themes helm google-c-style go-mode ggtags general flymake-google-cpplint exwm evil-nerd-commenter evil-magit evil-collection eterm-256color elpy elisp-refs doom-themes doom-modeline dmenu dired-single dired-open dired-hide-dotfiles default-text-scale counsel-projectile company-plisp company-org-roam company-lsp company-jedi company-irony company-c-headers company-box command-log-mode cfrs better-shell auto-complete-clang-async auto-complete-clang auto-complete-c-headers all-the-icons-dired ace-window)))
+   '(afternoon-theme darktooth-theme ample-theme eglot fzf rg deadgrep org-pdfview all-the-icons-ivy which-key vscode-icon visual-fill-column virtualenvwrapper use-package typescript-mode try tree-sitter-langs timp smartparens simple-mpc rust-mode rainbow-delimiters pfuture org-bullets omnisharp mingus material-theme lua-mode lsp-ui lsp-ivy jedi ivy-rich iedit hydra hungry-delete humanoid-themes helm google-c-style go-mode ggtags general flymake-google-cpplint exwm evil-nerd-commenter evil-magit evil-collection eterm-256color elpy elisp-refs doom-themes doom-modeline dmenu dired-single dired-open dired-hide-dotfiles default-text-scale counsel-projectile company-plisp company-org-roam company-lsp company-jedi company-irony company-c-headers company-box command-log-mode cfrs better-shell auto-complete-clang-async auto-complete-clang auto-complete-c-headers all-the-icons-dired ace-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
