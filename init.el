@@ -157,12 +157,13 @@
 (general-define-key
  "C-M-o" 'counsel-find-file
  "C-s" 'save-buffer
- "C-`" 'other-window
- "M-`" 'counsel-switch-buffer
+ "<C-tab>" 'other-window
+ "<M-tab>" 'counsel-switch-buffer
  "C-q" 'delete-window
- "C-M-h" 'split-window-below
- "C-M-g" 'org-agenda
- "C-M-v" 'split-window-right
+ "M-h" 'split-window-below
+ "M-g" 'org-agenda
+ "M-v" 'split-window-right
+ "M-s" 'projectile-switch-project
  "M-q" 'kill-buffer)
 
 (use-package projectile
@@ -418,11 +419,9 @@
 	  
 ;; (exwm-enable)
   ))
-;; ~/.config/polybar/configemacs.int
 
-;; ~/.config/polybar/launchemacs.sh
 
-;; (setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ~/.config/polybar/configemacs.int main"))
+(setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ./polybar/configemacs.int main"))
 
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
