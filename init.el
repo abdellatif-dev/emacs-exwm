@@ -81,7 +81,7 @@
   :config
   (ivy-mode 1))
 
-(use-package all-the-icons 
+(use-package all-the-icons
 :ensure t
 :defer 0.5)
 
@@ -219,8 +219,7 @@
   :hook (org-mode . efs/org-mode-setup)
   :config
   (setq org-agenda-files
-	'("~/Desktop/dev/orgfiles/flagos.org"
-	  "/home/flagmate/Desktop/dev/orgfiles/todo.org"
+	'("/home/flagmate/Desktop/dev/orgfiles/todo.org"
 	  "/home/flagmate/Desktop/dev/orgfiles/projects.org"))
   (setq org-ellipsis " ▾")
   (efs/org-font-setup))
@@ -367,7 +366,7 @@
 
   ;; When window title updates, use it to set the buffer name
   (add-hook 'exwm-update-title-hook #'efs/exwm-update-title)
- 
+
   (require 'exwm-randr)
   (exwm-randr-enable)
 
@@ -416,12 +415,12 @@
           ([?\s-7] . (lambda () (interactive) (exwm-workspace-switch-create 6)))
           ([?\s-8] . (lambda () (interactive) (exwm-workspace-switch-create 7)))
           ([?\s-9] . (lambda () (interactive) (exwm-workspace-switch-create 8)))))
-	  
+
 ;; (exwm-enable)
   ))
 
 
-(setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ./polybar/configemacs.int main"))
+;; (setq efs/polybar-process (start-process-shell-command "polybar" nil "polybar -c ./polybar/configemacs.int main"))
 
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
@@ -496,15 +495,15 @@
 
 (setq py-python-command "python3")
 (setq python-shell-interpreter "python3")
- 
+
 
 (use-package elpy
   :ensure t
   :custom (elpy-rpc-backend "jedi")
-  :config 
-  
+  :config
+
   (elpy-enable)
-  
+
   )
 
 (use-package virtualenvwrapper
@@ -519,7 +518,7 @@
   :ensure t
   :config
   (global-hungry-delete-mode))
-  
+
 (use-package smartparens
 :ensure t
   :hook (prog-mode . smartparens-mode)
@@ -544,7 +543,7 @@
 
 (use-package ggtags
   :ensure t
-  :config 
+  :config
   (add-hook 'c-mode-common-hook
             (lambda ()
               (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
@@ -555,7 +554,7 @@
 (use-package mingus
 :ensure t)
 
-(use-package deadgrep 
+(use-package deadgrep
 :ensure t)
 
 (use-package rg

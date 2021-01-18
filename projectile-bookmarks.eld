@@ -1,1 +1,1 @@
-("~/.config/emacs/" "~/Desktop/dev/website/" "~/Desktop/dev/flag-os/" "~/.config/emacs/elpa/xelb-0.18/" "~/.config/emacs/elpa/tsc-20201229.1403/" "~/.config/emacs/elpa/jedi-core-20191011.1750/")
+("~/Desktop/dev/website/" "~/.config/emacs/" "~/.config/emacs/elpa/xelb-0.18/" "~/.config/emacs/elpa/tsc-20201229.1403/" "~/.config/emacs/elpa/jedi-core-20191011.1750/")
